@@ -1,0 +1,114 @@
+.user-card-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  animation: fadeIn 0.3s ease-out;
+  pointer-events: none; /* Allow clicks to pass through overlay area */
+}
+
+.user-card {
+  pointer-events: auto; /* Re-enable clicks on the card itself */
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  width: 320px;
+  max-width: 90vw;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Compact Design Styles */
+.user-card.compact {
+  width: 280px;
+  padding: 16px;
+  border-radius: 20px;
+}
+
+.card-header-compact {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.user-avatar-compact {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #f0f0f0;
+}
+
+.user-info-compact {
+  flex: 1;
+  text-align: left;
+}
+
+.user-name-compact {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #202124;
+}
+
+.user-rating-compact {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  color: #5f6368;
+  margin-top: 2px;
+}
+
+.close-button-compact {
+  background: #f1f3f4;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  color: #5f6368;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  padding: 0;
+  transition: background 0.2s;
+}
+
+.close-button-compact:hover {
+  background: #e8eaed;
+}
+
+.user-skills-compact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.skill-chip-compact {
+  background: #e8f0fe;
+  color: #1967d2;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.star-icon {
+  color: #fbbc04;
+  margin-right: 4px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -45%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}

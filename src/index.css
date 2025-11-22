@@ -1,0 +1,158 @@
+:root {
+  --primary-color: #4285F4;
+  --text-color: #333;
+  --bg-color: #f5f5f5;
+  --glass-bg: rgba(255, 255, 255, 0.9);
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --radius: 12px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  height: 100vh;
+  overflow: hidden;
+}
+
+.app-container {
+  display: block;
+  height: 100vh;
+}
+
+.map-container {
+  width: 100%;
+  height: 100%;
+  position: relative; /* Needed for absolute positioning of marker */
+}
+
+.google-map {
+  width: 100%;
+  height: 100%;
+}
+
+.fixed-marker {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%); /* Center horizontally, place bottom at center vertically */
+  z-index: 1; /* Ensure it's above the map */
+  pointer-events: none; /* Let clicks pass through to the map */
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+/* Autocomplete Styles */
+.autocomplete-container {
+  position: relative;
+  width: 100%;
+}
+
+.autocomplete-input {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.autocomplete-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(66, 133, 244, 0.1);
+}
+
+.loading-indicator {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.85rem;
+  color: #888;
+  pointer-events: none;
+}
+
+.suggestions-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border-radius: var(--radius);
+  margin-top: 0.5rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  list-style: none;
+  overflow: hidden;
+  z-index: 100;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.suggestion-item {
+  padding: 1rem;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.suggestion-item:hover {
+  background: #f8f9fa;
+}
+
+.main-text {
+  font-weight: 600;
+  color: #333;
+}
+
+.secondary-text {
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: 0.25rem;
+}
+
+.place-details {
+  margin-top: 1rem;
+  padding: 1.5rem;
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  animation: slideIn 0.3s ease-out;
+}
+
+.place-details h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 100%;
+    height: 40%;
+    padding: 1rem;
+  }
+  
+  .map-wrapper {
+    height: 60%;
+  }
+}
